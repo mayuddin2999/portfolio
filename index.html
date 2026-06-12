@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cyber">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mayuddin Mansuri — 3D Generalist, Texture & Lighting Artist, Graphic Designer. 5+ years of experience creating stunning visuals.">
+    <meta name="keywords" content="3D Artist, Graphic Designer, Texture Artist, Lighting Artist, Portfolio, Mayuddin Mansuri">
+    <meta name="author" content="Mayuddin Mansuri">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Mayuddin Mansuri | 3D Generalist + Designer">
+    <meta property="og:description" content="Creative 3D Generalist & Designer with 5+ years of experience.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mayuddinmansuri.com">
+    <meta property="og:image" content="assets/og-image.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mayuddin Mansuri | 3D Generalist + Designer">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <title>Mayuddin Mansuri | 3D Generalist + Designer</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Mayuddin Mansuri",
+        "jobTitle": "3D Generalist & Designer",
+        "url": "https://mayuddinmansuri.com",
+        "sameAs": [
+            "https://www.instagram.com/mayuddinmansuri",
+            "https://www.linkedin.com/in/mayuddinmansuri",
+            "https://www.facebook.com/mayuddinmansuri"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <!-- ==================== CUSTOM CURSOR ==================== -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+    <div class="cursor-text" id="cursorText"></div>
+
+    <!-- ==================== LOADER ==================== -->
+    <div class="loader" id="loader">
+        <div class="loader-inner">
+            <div class="loader-glass-orb">
+                <div class="orb-ring ring-1"></div>
+                <div class="orb-ring ring-2"></div>
+                <div class="orb-ring ring-3"></div>
+                <div class="orb-core"></div>
+            </div>
+            <p class="loader-text">LOADING PORTFOLIO</p>
+            <div class="loader-bar">
+                <div class="loader-bar-fill" id="loaderBar"></div>
+            </div>
+            <p class="loader-percent" id="loaderPercent">0%</p>
+        </div>
+    </div>
+
+    <!-- ==================== BACKGROUNDS ==================== -->
+    <canvas id="particleCanvas"></canvas>
+    <div class="glass-ambient-bg">
+        <div class="ambient-orb orb-1"></div>
+        <div class="ambient-orb orb-2"></div>
+        <div class="ambient-orb orb-3"></div>
+        <div class="ambient-orb orb-4"></div>
+    </div>
+    <div class="noise-overlay"></div>
+
+    <!-- ==================== THEME SWITCHER ==================== -->
+    <div class="theme-switcher glass-panel" id="themeSwitcher">
+        <div class="theme-btn active" data-theme="cyber" title="Cyber">
+            <span style="background: linear-gradient(135deg, #00f0ff, #7b2ff7);"></span>
+        </div>
+        <div class="theme-btn" data-theme="neon" title="Neon">
+            <span style="background: linear-gradient(135deg, #ff2d75, #7b2ff7);"></span>
+        </div>
+        <div class="theme-btn" data-theme="matrix" title="Matrix">
+            <span style="background: linear-gradient(135deg, #00ff41, #008f11);"></span>
+        </div>
+        <div class="theme-btn" data-theme="gold" title="Gold">
+            <span style="background: linear-gradient(135deg, #ffd700, #ff8c00);"></span>
+        </div>
+    </div>
+
+    <!-- ==================== MUSIC PLAYER ==================== -->
+    <div class="music-player glass-panel" id="musicPlayer">
+        <div class="music-visualizer">
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <span class="music-label">SFX</span>
+    </div>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-logo">
+            <span class="logo-text">M</span>
+            <span class="logo-dot">.</span>
+            <span class="logo-text">M</span>
+        </div>
+
+        <div class="nav-availability glass-pill" id="availabilityBadge">
+            <span class="availability-dot"></span>
+            <span class="availability-text">Available for Work</span>
+        </div>
+
+        <div class="nav-links" id="navLinks">
+            <a href="#home" class="nav-link active" data-section="home">Home</a>
+            <a href="#about" class="nav-link" data-section="about">About</a>
+            <a href="#experience" class="nav-link" data-section="experience">Experience</a>
+            <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+            <a href="#portfolio" class="nav-link" data-section="portfolio">Portfolio</a>
+            <a href="#showreel" class="nav-link" data-section="showreel">Showreel</a>
+            <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+        </div>
+
+        <a href="#" class="nav-cv-btn glass-btn" id="navDownloadCV">
+            <i class="fas fa-download"></i>
+            <span>CV</span>
+        </a>
+
+        <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- ==================== PROGRESS BAR ==================== -->
+    <div class="page-progress">
+        <div class="page-progress-fill" id="pageProgress"></div>
+    </div>
+
+    <!-- ==================== MOBILE MENU ==================== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-bg"></div>
+        <div class="mobile-menu-links">
+            <a href="#home" class="mobile-link" data-index="01">Home</a>
+            <a href="#about" class="mobile-link" data-index="02">About</a>
+            <a href="#experience" class="mobile-link" data-index="03">Experience</a>
+            <a href="#skills" class="mobile-link" data-index="04">Skills</a>
+            <a href="#portfolio" class="mobile-link" data-index="05">Portfolio</a>
+            <a href="#showreel" class="mobile-link" data-index="06">Showreel</a>
+            <a href="#contact" class="mobile-link" data-index="07">Contact</a>
+            <a href="#" class="mobile-link mobile-cv-link glass-btn" id="mobileDownloadCV">
+                <i class="fas fa-download"></i> Download CV
+            </a>
+        </div>
+    </div>
+
+    <!-- ==================== SIDE SOCIALS ==================== -->
+    <div class="side-socials">
+        <a href="https://www.instagram.com/mayuddinmansuri" target="_blank" rel="noopener noreferrer" class="social-icon glass-icon" data-tooltip="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/mayuddinmansuri" target="_blank" rel="noopener noreferrer" class="social-icon glass-icon" data-tooltip="Facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.linkedin.com/in/mayuddinmansuri" target="_blank" rel="noopener noreferrer" class="social-icon glass-icon" data-tooltip="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.behance.net/mayuddinmansuri" target="_blank" rel="noopener noreferrer" class="social-icon glass-icon" data-tooltip="Behance" aria-label="Behance"><i class="fab fa-behance"></i></a>
+        <a href="https://www.artstation.com/mayuddinmansuri" target="_blank" rel="noopener noreferrer" class="social-icon glass-icon" data-tooltip="ArtStation" aria-label="ArtStation"><i class="fab fa-artstation"></i></a>
+        <div class="social-line"></div>
+    </div>
+
+    <!-- ==================== SCROLL INDICATOR ==================== -->
+    <div class="scroll-indicator">
+        <span>SCROLL</span>
+        <div class="scroll-line">
+            <div class="scroll-dot"></div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         HERO SECTION
+         ============================================================ -->
+    <section class="hero" id="home">
+        <div class="hero-bg-grid"></div>
+
+        <div class="hero-glitch-bg" aria-hidden="true">
+            <span>MAYUDDIN</span>
+            <span>MAYUDDIN</span>
+            <span>MAYUDDIN</span>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-greeting reveal-text">
+                <span class="greeting-line"></span>
+                <span class="greeting-text">HELLO, I AM</span>
+                <span class="greeting-line"></span>
+            </div>
+
+            <h1 class="hero-name">
+                <span class="name-first reveal-up" data-text="MANSURI">MANSURI</span>
+                <span class="name-last reveal-up" data-delay="200" data-text="MAYUDDIN">MAYUDDIN</span>
+            </h1>
+
+            <div class="hero-title-wrapper reveal-up" data-delay="400">
+                <div class="hero-title-box glass-card">
+                    <div class="title-scanner"></div>
+                    <span class="hero-title">3D GENERALIST</span>
+                    <span class="hero-title-divider">+</span>
+                    <span class="hero-title">DESIGNER</span>
+                </div>
+            </div>
+
+            <div class="typing-wrapper glass-subtle reveal-up" data-delay="500">
+                <span class="typing-prefix">I create </span>
+                <span class="typing-text" id="typingText"></span>
+                <span class="typing-cursor">|</span>
+            </div>
+
+            <div class="hero-buttons reveal-up" data-delay="700">
+                <a href="#contact" class="btn btn-primary glass-btn magnetic-btn">
+                    <span class="btn-text">CONTACT ME</span>
+                    <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+                    <div class="btn-shine"></div>
+                </a>
+                <a href="#portfolio" class="btn btn-secondary glass-btn magnetic-btn">
+                    <span class="btn-text">VIEW WORK</span>
+                    <span class="btn-icon"><i class="fas fa-th-large"></i></span>
+                    <div class="btn-shine"></div>
+                </a>
+                <a href="#" class="btn btn-cv glass-btn magnetic-btn" id="heroDownloadCV">
+                    <span class="btn-text">DOWNLOAD CV</span>
+                    <span class="btn-icon"><i class="fas fa-download"></i></span>
+                    <div class="btn-shine"></div>
+                </a>
+            </div>
+
+            <div class="hero-stats glass-card reveal-up" data-delay="900">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="5">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-label">Years Exp.</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="8">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-label">Software</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="50">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="20">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-label">Clients</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="floating-elements">
+            <div class="float-shape glass-float shape-1"></div>
+            <div class="float-shape glass-float shape-2"></div>
+            <div class="float-shape glass-float shape-3"></div>
+            <div class="float-shape glass-float shape-4"></div>
+            <div class="float-shape glass-float shape-5"></div>
+            <div class="float-shape glass-float shape-6"></div>
+        </div>
+
+        <div class="scroll-down-arrow">
+            <a href="#about" aria-label="Scroll to About section">
+                <div class="mouse-icon glass-subtle">
+                    <div class="mouse-wheel"></div>
+                </div>
+                <span>Scroll Down</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         ABOUT SECTION
+         ============================================================ -->
+    <section class="about" id="about">
+        <div class="section-bg-text" aria-hidden="true">ABOUT</div>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title reveal-up">About <span class="highlight">Me</span></h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="about-content">
+                <div class="about-image-wrapper reveal-left">
+                    <div class="about-image-box tilt-card glass-card">
+                        <div class="about-image-placeholder">
+                            <div class="placeholder-icon">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                            <span>M.M</span>
+                        </div>
+                        <div class="about-image-border"></div>
+                        <div class="about-image-dots"></div>
+                        <div class="image-glitch-overlay"></div>
+                    </div>
+                    <div class="about-badge glass-card">
+                        <span class="badge-number" data-count="5">0</span>
+                        <span class="badge-plus">+</span>
+                        <span class="badge-text">Years<br>Experience</span>
+                    </div>
+                </div>
+
+                <div class="about-text-wrapper reveal-right">
+                    <div class="about-quote glass-card">
+                        <i class="fas fa-quote-left quote-icon"></i>
+                        <p class="quote-text">
+                            "Design Brings Content into Focus, Design Makes Function Visible"
+                        </p>
+                    </div>
+
+                    <p class="about-description">
+                        Hello, I am <span class="highlight">Mayuddin Mansuri</span> — a passionate
+                        <span class="highlight">3D Generalist & Designer</span> with over 5 years of experience.
+                        I specialize in creating photorealistic textures, cinematic lighting, and compelling visual designs.
+                        Currently leading the texturing & lighting team at Phibonacci Solutions.
+                    </p>
+
+                    <div class="about-facts glass-card">
+                        <div class="fact-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Lead Artist at Phibonacci Solutions</span>
+                        </div>
+                        <div class="fact-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Expert in PBR Texturing & Lighting</span>
+                        </div>
+                        <div class="fact-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Available for Freelance Projects</span>
+                        </div>
+                    </div>
+
+                    <div class="marquee-wrapper glass-subtle">
+                        <div class="marquee-track">
+                            <span>3D MODELING • TEXTURING • LIGHTING • GRAPHIC DESIGN • UI/UX • BRANDING • ANIMATION • RENDERING • </span>
+                            <span>3D MODELING • TEXTURING • LIGHTING • GRAPHIC DESIGN • UI/UX • BRANDING • ANIMATION • RENDERING • </span>
+                        </div>
+                    </div>
+
+                    <div class="about-info-grid">
+                        <div class="info-item glass-card hover-lift">
+                            <span class="info-label">Name</span>
+                            <span class="info-value">Mayuddin Mansuri</span>
+                        </div>
+                        <div class="info-item glass-card hover-lift">
+                            <span class="info-label">Date of Birth</span>
+                            <span class="info-value">14 July 2000</span>
+                        </div>
+                        <div class="info-item glass-card hover-lift">
+                            <span class="info-label">Email</span>
+                            <span class="info-value">mayuddinmansuri786@gmail.com</span>
+                        </div>
+                        <div class="info-item glass-card hover-lift">
+                            <span class="info-label">Location</span>
+                            <span class="info-value">Gujarat, India</span>
+                        </div>
+                        <div class="info-item glass-card hover-lift">
+                            <span class="info-label">Languages</span>
+                            <span class="info-value">English, Hindi, Gujarati</span>
+                        </div>
+                        <div class="info-item glass-card hover-lift">
+                            <span class="info-label">Status</span>
+                            <span class="info-value status-available">
+                                <span class="status-dot-inline"></span>
+                                Available for Work
+                            </span>
+                        </div>
+                    </div>
+
+                    <a href="#" class="btn btn-cv glass-btn about-cv-btn magnetic-btn" id="aboutDownloadCV">
+                        <span class="btn-text">DOWNLOAD CV</span>
+                        <span class="btn-icon"><i class="fas fa-file-pdf"></i></span>
+                        <div class="btn-shine"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MARQUEE BANNER ==================== -->
+    <div class="full-marquee glass-subtle">
+        <div class="full-marquee-track">
+            <span>3D GENERALIST</span>
+            <span class="marquee-star">✦</span>
+            <span>TEXTURE ARTIST</span>
+            <span class="marquee-star">✦</span>
+            <span>LIGHTING ARTIST</span>
+            <span class="marquee-star">✦</span>
+            <span>GRAPHIC DESIGNER</span>
+            <span class="marquee-star">✦</span>
+            <span>LEAD ARTIST</span>
+            <span class="marquee-star">✦</span>
+            <span>3D GENERALIST</span>
+            <span class="marquee-star">✦</span>
+            <span>TEXTURE ARTIST</span>
+            <span class="marquee-star">✦</span>
+            <span>LIGHTING ARTIST</span>
+            <span class="marquee-star">✦</span>
+            <span>GRAPHIC DESIGNER</span>
+            <span class="marquee-star">✦</span>
+            <span>LEAD ARTIST</span>
+            <span class="marquee-star">✦</span>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         EXPERIENCE SECTION
+         ============================================================ -->
+    <section class="experience" id="experience">
+        <div class="section-bg-text" aria-hidden="true">WORK</div>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title reveal-up">Work <span class="highlight">Experience</span></h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-line">
+                    <div class="timeline-line-fill" id="timelineFill"></div>
+                </div>
+
+                <div class="timeline-item reveal-up" data-delay="0">
+                    <div class="timeline-dot"><div class="dot-pulse"></div></div>
+                    <div class="timeline-card glass-card hover-lift">
+                        <div class="card-header">
+                            <span class="card-date">Jan 2018 — Jan 2019</span>
+                            <div class="card-status glass-pill past">Completed</div>
+                        </div>
+                        <h3 class="card-title">Senior Graphic Designer</h3>
+                        <p class="card-company"><i class="fas fa-building"></i> Group Bayport</p>
+                        <p class="card-description">Crafted compelling visual designs, brand identities, and marketing materials for diverse clientele across multiple industries.</p>
+                        <div class="card-tags">
+                            <span class="card-tag glass-pill">Photoshop</span>
+                            <span class="card-tag glass-pill">Illustrator</span>
+                            <span class="card-tag glass-pill">Branding</span>
+                            <span class="card-tag glass-pill">Print Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal-up" data-delay="200">
+                    <div class="timeline-dot"><div class="dot-pulse"></div></div>
+                    <div class="timeline-card glass-card hover-lift">
+                        <div class="card-header">
+                            <span class="card-date">Jan 2019 — Jan 2021</span>
+                            <div class="card-status glass-pill past">Completed</div>
+                        </div>
+                        <h3 class="card-title">Freelance Senior Graphic Designer</h3>
+                        <p class="card-company"><i class="fas fa-laptop"></i> Self-Employed</p>
+                        <p class="card-description">Delivered creative solutions for 20+ brands and businesses worldwide, specializing in brand identity and digital design.</p>
+                        <div class="card-tags">
+                            <span class="card-tag glass-pill">Freelance</span>
+                            <span class="card-tag glass-pill">UI Design</span>
+                            <span class="card-tag glass-pill">Print</span>
+                            <span class="card-tag glass-pill">Social Media</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal-up" data-delay="400">
+                    <div class="timeline-dot"><div class="dot-pulse"></div></div>
+                    <div class="timeline-card glass-card hover-lift">
+                        <div class="card-header">
+                            <span class="card-date">Sep 2021 — Nov 2021</span>
+                            <div class="card-status glass-pill past">Completed</div>
+                        </div>
+                        <h3 class="card-title">3D Assets Modeling Artist</h3>
+                        <p class="card-company"><i class="fas fa-building"></i> Phibonacci Solutions PVT. LTD</p>
+                        <p class="card-description">Created high-quality 3D assets and models for interactive applications and game environments.</p>
+                        <div class="card-tags">
+                            <span class="card-tag glass-pill">Maya</span>
+                            <span class="card-tag glass-pill">3DS Max</span>
+                            <span class="card-tag glass-pill">Modeling</span>
+                            <span class="card-tag glass-pill">UV Mapping</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal-up" data-delay="600">
+                    <div class="timeline-dot"><div class="dot-pulse"></div></div>
+                    <div class="timeline-card glass-card hover-lift">
+                        <div class="card-header">
+                            <span class="card-date">Dec 2021 — May 2022</span>
+                            <div class="card-status glass-pill past">Completed</div>
+                        </div>
+                        <h3 class="card-title">3D Texturing & Lighting Artist</h3>
+                        <p class="card-company"><i class="fas fa-building"></i> Phibonacci Solutions PVT. LTD</p>
+                        <p class="card-description">Specialized in photorealistic PBR texturing and cinematic lighting for architectural and product visualization.</p>
+                        <div class="card-tags">
+                            <span class="card-tag glass-pill">Substance Painter</span>
+                            <span class="card-tag glass-pill">V-Ray</span>
+                            <span class="card-tag glass-pill">Lighting</span>
+                            <span class="card-tag glass-pill">Rendering</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal-up" data-delay="800">
+                    <div class="timeline-dot active"><div class="dot-pulse"></div></div>
+                    <div class="timeline-card glass-card active-card hover-lift">
+                        <div class="card-glow-border"></div>
+                        <div class="card-header">
+                            <span class="card-date">May 2022 — Present</span>
+                            <div class="card-status glass-pill current">Current</div>
+                        </div>
+                        <h3 class="card-title">Lead 3D Texturing & Lighting Artist</h3>
+                        <p class="card-company"><i class="fas fa-building"></i> Phibonacci Solutions PVT. LTD</p>
+                        <p class="card-description">Leading a team of 5 artists, establishing texturing & lighting pipelines, delivering photorealistic visuals for AAA projects, and mentoring junior artists.</p>
+                        <div class="card-tags">
+                            <span class="card-tag glass-pill">Leadership</span>
+                            <span class="card-tag glass-pill">PBR</span>
+                            <span class="card-tag glass-pill">Pipeline</span>
+                            <span class="card-tag glass-pill">Mentoring</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SKILLS SECTION
+         ============================================================ -->
+    <section class="skills" id="skills">
+        <div class="section-bg-text" aria-hidden="true">SKILLS</div>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title reveal-up">Software <span class="highlight">Proficiency</span></h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="skill-tabs reveal-up">
+                <button class="skill-tab glass-pill active" data-category="all">All</button>
+                <button class="skill-tab glass-pill" data-category="3d">3D Software</button>
+                <button class="skill-tab glass-pill" data-category="design">Design</button>
+                <button class="skill-tab glass-pill" data-category="other">Other</button>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card glass-card reveal-up tilt-card" data-delay="0" data-category="3d">
+                    <div class="skill-icon-wrapper">
+                        <div class="skill-icon-bg glass-orb"></div>
+                        <i class="skill-icon fas fa-cube"></i>
+                    </div>
+                    <h3 class="skill-name">Autodesk Maya</h3>
+                    <div class="skill-bar glass-bar">
+                        <div class="skill-bar-fill" data-width="90"></div>
+                    </div>
+                    <span class="skill-percent">90%</span>
+                </div>
+
+                <div class="skill-card glass-card reveal-up tilt-card" data-delay="100" data-category="3d">
+                    <div class="skill-icon-wrapper">
+                        <div class="skill-icon-bg glass-orb"></div>
+                        <i class="skill-icon fas fa-cubes"></i>
+                    </div>
+                    <h3 class="skill-name">3DS MAX</h3>
+                    <div class="skill-bar glass-bar">
+                        <div class="skill-bar-fill" data-width="85"></div>
+                    </div>
+                    <span class="skill-percent">85%</span>
+                </div>
+
+                <div class="skill-card glass-card reveal-up tilt-card" data-delay="200" data-category="3d">
+                    <div class="skill-icon-wrapper">
+                        <div class="skill-icon-bg glass-orb"></div>
+                        <i class="skill-icon fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="skill-name">Substance Painter</h3>
+                    <div class="skill-bar glass-bar">
+                        <div class="skill-bar-fill" data-width="92"></div>
+                    </div>
+                    <span class="skill-percent">92%</span>
+                </div>
+
+                <div class="skill-card glass-card reveal-up tilt-card" data-delay="300" data-category="design">
+                    <div class="skill-icon-wrapper">
+                        <div class="skill-icon-bg glass-orb"></div>
+                        <i class="skill-icon fas fa-image"></i>
+                    </div>
+                    <h3 class="skill-name">Adobe Photoshop</h3>
+                    <div class="skill-bar glass-bar">
+                        <div class="skill-bar-fill" data-width="95"></div>
+                    </div>
+                    <span class="skill-percent">95%</span>
+                </div>
+
+                <div class="skill-card glass-card reveal-up tilt-card" data-delay="400" data-category="design">
+                    <div class="skill-icon-wrapper">
+                        <div class="skill-icon-bg glass-orb"></div>
+                        <i class="skill-icon fas fa-pen-nib"></i>
+                    </div>
+                    <h3 class="skill-name">Adobe Illustrator</h3>
+                    <div class="skill-bar glass-bar">
+                        <div class="skill-bar-fill" data-width="88"></div>
+                    </div>
+                    <span class="skill-percent">88%</span>
+                </div>
+
+                <div class="skill-card glass-card reveal-up tilt-card" data-delay="500" data-category="other">
+                    <div class="skill-icon-wrapper">
+                        <div class="skill-icon-bg glass-orb"></div>
+                        <i class="skill-icon fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="skill-name">Unity (3D + 2D)</h3>
+                    <div class="skill-bar glass-bar">
+                        <div class="skill-bar-fill" data-width="75"></div>
+                    </div>
+                    <span class="skill-percent">75%</span>
+                </div>
+
+                <div class="skill-card glass-card reveal-up tilt-card" data-delay="600" data-category="3d">
+                    <div class="skill-icon-wrapper">
+                        <div class="skill-icon-bg glass-orb"></div>
+                        <i class="skill-icon fas fa-vector-square"></i>
+                    </div>
+                    <h3 class="skill-name">Blender</h3>
+                    <div class="skill-bar glass-bar">
+                        <div class="skill-bar-fill" data-width="80"></div>
+                    </div>
+                    <span class="skill-percent">80%</span>
+                </div>
+
+                <div class="skill-card glass-card reveal-up tilt-card" data-delay="700" data-category="design">
+                    <div class="skill-icon-wrapper">
+                        <div class="skill-icon-bg glass-orb"></div>
+                        <i class="skill-icon fas fa-drafting-compass"></i>
+                    </div>
+                    <h3 class="skill-name">Figma</h3>
+                    <div class="skill-bar glass-bar">
+                        <div class="skill-bar-fill" data-width="70"></div>
+                    </div>
+                    <span class="skill-percent">70%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         PORTFOLIO SECTION
+         ============================================================ -->
+    <section class="portfolio" id="portfolio">
+        <div class="section-bg-text" aria-hidden="true">WORK</div>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title reveal-up">My <span class="highlight">Portfolio</span></h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="portfolio-filter reveal-up">
+                <button class="filter-btn glass-pill active" data-filter="all">All</button>
+                <button class="filter-btn glass-pill" data-filter="3d">3D Work</button>
+                <button class="filter-btn glass-pill" data-filter="texture">Texturing</button>
+                <button class="filter-btn glass-pill" data-filter="lighting">Lighting</button>
+                <button class="filter-btn glass-pill" data-filter="graphic">Graphic Design</button>
+            </div>
+
+            <div class="portfolio-grid" id="portfolioGrid">
+                <div class="portfolio-item reveal-up" data-filter="3d" data-delay="0">
+                    <div class="portfolio-card glass-card">
+                        <div class="portfolio-image">
+                            <div class="portfolio-placeholder">
+                                <i class="fas fa-cube"></i>
+                                <span>3D Model</span>
+                            </div>
+                            <div class="portfolio-overlay glass-overlay">
+                                <div class="portfolio-overlay-content">
+                                    <span class="portfolio-category">3D Modeling</span>
+                                    <h3 class="portfolio-title">Architecture Visualization</h3>
+                                    <p class="portfolio-desc">Photorealistic architectural rendering with detailed interior design.</p>
+                                    <div class="portfolio-actions">
+                                        <button class="portfolio-view-btn glass-btn" data-project="1">
+                                            <i class="fas fa-expand"></i> View
+                                        </button>
+                                        <a href="#" class="portfolio-link-btn glass-btn" target="_blank">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4>Architecture Visualization</h4>
+                            <span class="portfolio-tag">3D • Maya • V-Ray</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item reveal-up" data-filter="texture" data-delay="100">
+                    <div class="portfolio-card glass-card">
+                        <div class="portfolio-image">
+                            <div class="portfolio-placeholder">
+                                <i class="fas fa-paint-brush"></i>
+                                <span>Texture</span>
+                            </div>
+                            <div class="portfolio-overlay glass-overlay">
+                                <div class="portfolio-overlay-content">
+                                    <span class="portfolio-category">Texturing</span>
+                                    <h3 class="portfolio-title">PBR Material Study</h3>
+                                    <p class="portfolio-desc">Realistic PBR material creation using Substance Painter.</p>
+                                    <div class="portfolio-actions">
+                                        <button class="portfolio-view-btn glass-btn" data-project="2">
+                                            <i class="fas fa-expand"></i> View
+                                        </button>
+                                        <a href="#" class="portfolio-link-btn glass-btn" target="_blank">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4>PBR Material Study</h4>
+                            <span class="portfolio-tag">Substance • PBR</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item reveal-up" data-filter="lighting" data-delay="200">
+                    <div class="portfolio-card glass-card">
+                        <div class="portfolio-image">
+                            <div class="portfolio-placeholder">
+                                <i class="fas fa-sun"></i>
+                                <span>Lighting</span>
+                            </div>
+                            <div class="portfolio-overlay glass-overlay">
+                                <div class="portfolio-overlay-content">
+                                    <span class="portfolio-category">Lighting</span>
+                                    <h3 class="portfolio-title">Cinematic Scene Lighting</h3>
+                                    <p class="portfolio-desc">Dramatic cinematic lighting setup for product visualization.</p>
+                                    <div class="portfolio-actions">
+                                        <button class="portfolio-view-btn glass-btn" data-project="3">
+                                            <i class="fas fa-expand"></i> View
+                                        </button>
+                                        <a href="#" class="portfolio-link-btn glass-btn" target="_blank">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4>Cinematic Scene Lighting</h4>
+                            <span class="portfolio-tag">V-Ray • Lighting</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item reveal-up" data-filter="graphic" data-delay="300">
+                    <div class="portfolio-card glass-card">
+                        <div class="portfolio-image">
+                            <div class="portfolio-placeholder">
+                                <i class="fas fa-palette"></i>
+                                <span>Design</span>
+                            </div>
+                            <div class="portfolio-overlay glass-overlay">
+                                <div class="portfolio-overlay-content">
+                                    <span class="portfolio-category">Graphic Design</span>
+                                    <h3 class="portfolio-title">Brand Identity Design</h3>
+                                    <p class="portfolio-desc">Complete brand identity package including logo, stationery, and guidelines.</p>
+                                    <div class="portfolio-actions">
+                                        <button class="portfolio-view-btn glass-btn" data-project="4">
+                                            <i class="fas fa-expand"></i> View
+                                        </button>
+                                        <a href="#" class="portfolio-link-btn glass-btn" target="_blank">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4>Brand Identity Design</h4>
+                            <span class="portfolio-tag">Illustrator • Photoshop</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item reveal-up" data-filter="3d" data-delay="400">
+                    <div class="portfolio-card glass-card">
+                        <div class="portfolio-image">
+                            <div class="portfolio-placeholder">
+                                <i class="fas fa-car"></i>
+                                <span>3D Model</span>
+                            </div>
+                            <div class="portfolio-overlay glass-overlay">
+                                <div class="portfolio-overlay-content">
+                                    <span class="portfolio-category">3D Modeling</span>
+                                    <h3 class="portfolio-title">Vehicle Modeling</h3>
+                                    <p class="portfolio-desc">High-poly vehicle model with detailed textures and studio lighting.</p>
+                                    <div class="portfolio-actions">
+                                        <button class="portfolio-view-btn glass-btn" data-project="5">
+                                            <i class="fas fa-expand"></i> View
+                                        </button>
+                                        <a href="#" class="portfolio-link-btn glass-btn" target="_blank">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4>Vehicle Modeling</h4>
+                            <span class="portfolio-tag">Maya • Substance • V-Ray</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item reveal-up" data-filter="texture" data-delay="500">
+                    <div class="portfolio-card glass-card">
+                        <div class="portfolio-image">
+                            <div class="portfolio-placeholder">
+                                <i class="fas fa-gem"></i>
+                                <span>Texture</span>
+                            </div>
+                            <div class="portfolio-overlay glass-overlay">
+                                <div class="portfolio-overlay-content">
+                                    <span class="portfolio-category">Texturing</span>
+                                    <h3 class="portfolio-title">Game Asset Texturing</h3>
+                                    <p class="portfolio-desc">Stylized and PBR textures for game-ready 3D assets.</p>
+                                    <div class="portfolio-actions">
+                                        <button class="portfolio-view-btn glass-btn" data-project="6">
+                                            <i class="fas fa-expand"></i> View
+                                        </button>
+                                        <a href="#" class="portfolio-link-btn glass-btn" target="_blank">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4>Game Asset Texturing</h4>
+                            <span class="portfolio-tag">Substance • Unity</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-more reveal-up">
+                <a href="https://www.behance.net/mayuddinmansuri" target="_blank" rel="noopener noreferrer" class="btn btn-secondary glass-btn magnetic-btn">
+                    <span class="btn-text">VIEW ALL ON BEHANCE</span>
+                    <span class="btn-icon"><i class="fas fa-external-link-alt"></i></span>
+                    <div class="btn-shine"></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+     SHOWREEL SECTION
+     ============================================================ -->
+<section class="showreel" id="showreel">
+    <div class="section-bg-text" aria-hidden="true">REEL</div>
+    <div class="container">
+        <div class="section-header">
+            <span class="section-number">05</span>
+            <h2 class="section-title reveal-up">Show<span class="highlight">reel</span></h2>
+            <div class="section-line"></div>
+        </div>
+
+        <!-- Video Grid -->
+        <div class="video-grid reveal-up">
+
+            <!-- Video 1 - Taj Mahal -->
+            <div class="video-item">
+                <div class="video-container glass-card">
+                    <div class="video-overlay" onclick="playVideo(this)">
+                        <div class="play-button">
+                            <div class="play-circle">
+                                <svg viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="48" class="play-circle-border"></circle>
+                                </svg>
+                            </div>
+                            <i class="fas fa-play play-icon"></i>
+                        </div>
+                        <p class="play-text">TAJ MAHAL</p>
+                        <p class="play-subtext">Click to play</p>
+                    </div>
+                    <iframe
+                        src="https://www.youtube.com/embed/PdCXaOpVjq8"
+                        title="Taj Mahal"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <div class="video-frame-decoration">
+                    <span class="frame-corner top-left"></span>
+                    <span class="frame-corner top-right"></span>
+                    <span class="frame-corner bottom-left"></span>
+                    <span class="frame-corner bottom-right"></span>
+                </div>
+                <div class="video-title-label">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Taj Mahal</span>
+                </div>
+            </div>
+
+            <!-- Video 2 - Giza Pyramid -->
+            <div class="video-item">
+                <div class="video-container glass-card">
+                    <div class="video-overlay" onclick="playVideo(this)">
+                        <div class="play-button">
+                            <div class="play-circle">
+                                <svg viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="48" class="play-circle-border"></circle>
+                                </svg>
+                            </div>
+                            <i class="fas fa-play play-icon"></i>
+                        </div>
+                        <p class="play-text">GIZA PYRAMID</p>
+                        <p class="play-subtext">Click to play</p>
+                    </div>
+                    <iframe
+                        src="https://www.youtube.com/embed/G2Q_aL4XOfo"
+                        title="Giza Pyramid"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <div class="video-frame-decoration">
+                    <span class="frame-corner top-left"></span>
+                    <span class="frame-corner top-right"></span>
+                    <span class="frame-corner bottom-left"></span>
+                    <span class="frame-corner bottom-right"></span>
+                </div>
+                <div class="video-title-label">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Giza Pyramid</span>
+                </div>
+            </div>
+
+            <!-- Video 3 - Statue of Unity -->
+            <div class="video-item">
+                <div class="video-container glass-card">
+                    <div class="video-overlay" onclick="playVideo(this)">
+                        <div class="play-button">
+                            <div class="play-circle">
+                                <svg viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="48" class="play-circle-border"></circle>
+                                </svg>
+                            </div>
+                            <i class="fas fa-play play-icon"></i>
+                        </div>
+                        <p class="play-text">STATUE OF UNITY</p>
+                        <p class="play-subtext">Click to play</p>
+                    </div>
+                    <iframe
+                        src="https://www.youtube.com/embed/0H865MDmmCY"
+                        title="Statue of Unity"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <div class="video-frame-decoration">
+                    <span class="frame-corner top-left"></span>
+                    <span class="frame-corner top-right"></span>
+                    <span class="frame-corner bottom-left"></span>
+                    <span class="frame-corner bottom-right"></span>
+                </div>
+                <div class="video-title-label">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Statue of Unity</span>
+                </div>
+            </div>
+
+            <!-- Video 4 - E Learning VR Experience -->
+            <div class="video-item">
+                <div class="video-container glass-card">
+                    <div class="video-overlay" onclick="playVideo(this)">
+                        <div class="play-button">
+                            <div class="play-circle">
+                                <svg viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="48" class="play-circle-border"></circle>
+                                </svg>
+                            </div>
+                            <i class="fas fa-play play-icon"></i>
+                        </div>
+                        <p class="play-text">E LEARNING VR</p>
+                        <p class="play-subtext">Click to play</p>
+                    </div>
+                    <iframe
+                        src="https://www.youtube.com/embed/xdO_BmIeJjs"
+                        title="E Learning VR Experience"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <div class="video-frame-decoration">
+                    <span class="frame-corner top-left"></span>
+                    <span class="frame-corner top-right"></span>
+                    <span class="frame-corner bottom-left"></span>
+                    <span class="frame-corner bottom-right"></span>
+                </div>
+                <div class="video-title-label">
+                    <i class="fas fa-play-circle"></i>
+                    <span>E Learning VR Experience</span>
+                </div>
+            </div>
+
+            <!-- Video 5 - Ship Controller VR Training -->
+            <div class="video-item">
+                <div class="video-container glass-card">
+                    <div class="video-overlay" onclick="playVideo(this)">
+                        <div class="play-button">
+                            <div class="play-circle">
+                                <svg viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="48" class="play-circle-border"></circle>
+                                </svg>
+                            </div>
+                            <i class="fas fa-play play-icon"></i>
+                        </div>
+                        <p class="play-text">SHIP CONTROLLER VR</p>
+                        <p class="play-subtext">Click to play</p>
+                    </div>
+                    <iframe
+                        src="https://www.youtube.com/embed/RCkMvqMus3M"
+                        title="Ship Controller VR Training"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <div class="video-frame-decoration">
+                    <span class="frame-corner top-left"></span>
+                    <span class="frame-corner top-right"></span>
+                    <span class="frame-corner bottom-left"></span>
+                    <span class="frame-corner bottom-right"></span>
+                </div>
+                <div class="video-title-label">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Ship Controller VR Training</span>
+                </div>
+            </div>
+
+            <!-- Video 6 - Ship Controller Training VR -->
+            <div class="video-item">
+                <div class="video-container glass-card">
+                    <div class="video-overlay" onclick="playVideo(this)">
+                        <div class="play-button">
+                            <div class="play-circle">
+                                <svg viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="48" class="play-circle-border"></circle>
+                                </svg>
+                            </div>
+                            <i class="fas fa-play play-icon"></i>
+                        </div>
+                        <p class="play-text">SHIP TRAINING VR</p>
+                        <p class="play-subtext">Click to play</p>
+                    </div>
+                    <iframe
+                        src="https://www.youtube.com/embed/zTmnjJBIizA"
+                        title="Ship Controller Training VR"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <div class="video-frame-decoration">
+                    <span class="frame-corner top-left"></span>
+                    <span class="frame-corner top-right"></span>
+                    <span class="frame-corner bottom-left"></span>
+                    <span class="frame-corner bottom-right"></span>
+                </div>
+                <div class="video-title-label">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Ship Controller Training VR</span>
+                </div>
+            </div>
+
+            <!-- Video 7 - On Field Safety Training for Ship in VR -->
+            <div class="video-item">
+                <div class="video-container glass-card">
+                    <div class="video-overlay" onclick="playVideo(this)">
+                        <div class="play-button">
+                            <div class="play-circle">
+                                <svg viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="48" class="play-circle-border"></circle>
+                                </svg>
+                            </div>
+                            <i class="fas fa-play play-icon"></i>
+                        </div>
+                        <p class="play-text">SAFETY TRAINING VR</p>
+                        <p class="play-subtext">Click to play</p>
+                    </div>
+                    <iframe
+                        src="https://www.youtube.com/embed/zZ5rvVOp4rs"
+                        title="On Field Safety Training for Ship in VR"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <div class="video-frame-decoration">
+                    <span class="frame-corner top-left"></span>
+                    <span class="frame-corner top-right"></span>
+                    <span class="frame-corner bottom-left"></span>
+                    <span class="frame-corner bottom-right"></span>
+                </div>
+                <div class="video-title-label">
+                    <i class="fas fa-play-circle"></i>
+                    <span>On Field Safety Training VR</span>
+                </div>
+            </div>
+
+            <!-- Video 8 - VR Training (LNG Tank Offloading) -->
+            <div class="video-item">
+                <div class="video-container glass-card">
+                    <div class="video-overlay" onclick="playVideo(this)">
+                        <div class="play-button">
+                            <div class="play-circle">
+                                <svg viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="48" class="play-circle-border"></circle>
+                                </svg>
+                            </div>
+                            <i class="fas fa-play play-icon"></i>
+                        </div>
+                        <p class="play-text">LNG TANK VR</p>
+                        <p class="play-subtext">Click to play</p>
+                    </div>
+                    <iframe
+                        src="https://www.youtube.com/embed/RJwJwJxg9mo"
+                        title="VR Training LNG Tank Offloading"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <div class="video-frame-decoration">
+                    <span class="frame-corner top-left"></span>
+                    <span class="frame-corner top-right"></span>
+                    <span class="frame-corner bottom-left"></span>
+                    <span class="frame-corner bottom-right"></span>
+                </div>
+                <div class="video-title-label">
+                    <i class="fas fa-play-circle"></i>
+                    <span>VR Training (LNG Tank Offloading)</span>
+                </div>
+            </div>
+
+            <!-- Video 9 - 3D Showreel 2021 -->
+            <div class="video-item">
+                <div class="video-container glass-card">
+                    <div class="video-overlay" onclick="playVideo(this)">
+                        <div class="play-button">
+                            <div class="play-circle">
+                                <svg viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="48" class="play-circle-border"></circle>
+                                </svg>
+                            </div>
+                            <i class="fas fa-play play-icon"></i>
+                        </div>
+                        <p class="play-text">3D SHOWREEL 2021</p>
+                        <p class="play-subtext">Click to play</p>
+                    </div>
+                    <iframe
+                        src="https://www.youtube.com/embed/qLLDAd2zkJ4"
+                        title="3D Showreel 2021"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <div class="video-frame-decoration">
+                    <span class="frame-corner top-left"></span>
+                    <span class="frame-corner top-right"></span>
+                    <span class="frame-corner bottom-left"></span>
+                    <span class="frame-corner bottom-right"></span>
+                </div>
+                <div class="video-title-label">
+                    <i class="fas fa-play-circle"></i>
+                    <span>3D Showreel 2021</span>
+                </div>
+            </div>
+
+        </div><!-- end video-grid -->
+    </div>
+</section>
+
+    <!-- ============================================================
+         EDUCATION SECTION
+         ============================================================ -->
+    <section class="education" id="education">
+        <div class="section-bg-text" aria-hidden="true">LEARN</div>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2 class="section-title reveal-up">Education & <span class="highlight">Certifications</span></h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="education-grid">
+                <div class="education-column reveal-left">
+                    <h3 class="education-column-title">
+                        <i class="fas fa-graduation-cap"></i> Education
+                    </h3>
+
+                    <div class="education-card glass-card hover-lift">
+                        <div class="education-year">2018 - 2021</div>
+                        <h4 class="education-degree">Bachelor's in Animation & VFX</h4>
+                        <p class="education-school">
+                            <i class="fas fa-university"></i> University Name, Gujarat
+                        </p>
+                        <p class="education-desc">Specialized in 3D animation, visual effects, and digital content creation.</p>
+                    </div>
+
+                    <div class="education-card glass-card hover-lift">
+                        <div class="education-year">2016 - 2018</div>
+                        <h4 class="education-degree">HSC (Higher Secondary)</h4>
+                        <p class="education-school">
+                            <i class="fas fa-school"></i> School Name, Gujarat
+                        </p>
+                        <p class="education-desc">Science stream with focus on Computer Science.</p>
+                    </div>
+                </div>
+
+                <div class="education-column reveal-right">
+                    <h3 class="education-column-title">
+                        <i class="fas fa-certificate"></i> Certifications
+                    </h3>
+
+                    <div class="education-card glass-card cert-card hover-lift">
+                        <div class="cert-badge glass-orb"><i class="fas fa-award"></i></div>
+                        <h4 class="education-degree">Advanced 3D Texturing</h4>
+                        <p class="education-school">
+                            <i class="fas fa-laptop-code"></i> Online Course
+                        </p>
+                        <div class="cert-tags">
+                            <span class="cert-tag glass-pill">Substance Painter</span>
+                            <span class="cert-tag glass-pill">PBR</span>
+                        </div>
+                    </div>
+
+                    <div class="education-card glass-card cert-card hover-lift">
+                        <div class="cert-badge glass-orb"><i class="fas fa-award"></i></div>
+                        <h4 class="education-degree">Cinematic Lighting Masterclass</h4>
+                        <p class="education-school">
+                            <i class="fas fa-laptop-code"></i> Online Course
+                        </p>
+                        <div class="cert-tags">
+                            <span class="cert-tag glass-pill">V-Ray</span>
+                            <span class="cert-tag glass-pill">Arnold</span>
+                        </div>
+                    </div>
+
+                    <div class="education-card glass-card cert-card hover-lift">
+                        <div class="cert-badge glass-orb"><i class="fas fa-award"></i></div>
+                        <h4 class="education-degree">Adobe Certified Professional</h4>
+                        <p class="education-school">
+                            <i class="fas fa-building"></i> Adobe
+                        </p>
+                        <div class="cert-tags">
+                            <span class="cert-tag glass-pill">Photoshop</span>
+                            <span class="cert-tag glass-pill">Illustrator</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         TESTIMONIALS SECTION
+         ============================================================ -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-bg-text" aria-hidden="true">REVIEWS</div>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">07</span>
+                <h2 class="section-title reveal-up">Client <span class="highlight">Reviews</span></h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="testimonials-slider reveal-up">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <div class="testimonial-card glass-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Mayuddin delivered exceptional 3D work that exceeded our expectations. His attention to detail in texturing and lighting is outstanding."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar glass-orb">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Client Name</h4>
+                                <p>Company Name</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card glass-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Working with Mayuddin was a great experience. He understood our brand vision perfectly and delivered stunning designs."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar glass-orb">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Client Name</h4>
+                                <p>Company Name</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card glass-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="testimonial-text">"Professional, creative, and always on time. Mayuddin's 3D visualization skills are top-notch. Highly recommended!"</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar glass-orb">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Client Name</h4>
+                                <p>Company Name</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-nav">
+                    <button class="testimonial-prev glass-btn" aria-label="Previous testimonial"><i class="fas fa-chevron-left"></i></button>
+                    <div class="testimonial-dots" id="testimonialDots"></div>
+                    <button class="testimonial-next glass-btn" aria-label="Next testimonial"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PHILOSOPHY SECTION ==================== -->
+    <section class="philosophy" id="philosophy">
+        <div class="container">
+            <div class="philosophy-slider">
+                <div class="philosophy-slide active">
+                    <div class="philosophy-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3>"Creativity is intelligence having fun."</h3>
+                    <p>— Albert Einstein</p>
+                </div>
+                <div class="philosophy-slide">
+                    <div class="philosophy-icon"><i class="fas fa-palette"></i></div>
+                    <h3>"Design is not just what it looks like. Design is how it works."</h3>
+                    <p>— Steve Jobs</p>
+                </div>
+                <div class="philosophy-slide">
+                    <div class="philosophy-icon"><i class="fas fa-eye"></i></div>
+                    <h3>"Design Brings Content into Focus, Design Makes Function Visible"</h3>
+                    <p>— My Philosophy</p>
+                </div>
+                <div class="philosophy-slide">
+                    <div class="philosophy-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>"The details are not the details. They make the design."</h3>
+                    <p>— Charles Eames</p>
+                </div>
+            </div>
+            <div class="philosophy-dots">
+                <span class="dot glass-dot active" data-slide="0"></span>
+                <span class="dot glass-dot" data-slide="1"></span>
+                <span class="dot glass-dot" data-slide="2"></span>
+                <span class="dot glass-dot" data-slide="3"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACT SECTION
+         ============================================================ -->
+    <section class="contact" id="contact">
+        <div class="section-bg-text" aria-hidden="true">CONTACT</div>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">08</span>
+                <h2 class="section-title reveal-up">Get In <span class="highlight">Touch</span></h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info reveal-left">
+                    <h3 class="contact-subtitle">Let's work together</h3>
+                    <p class="contact-text">
+                        Have a project in mind? Let's create something amazing together.
+                        I'm available for freelance work, collaborations, and full-time opportunities.
+                    </p>
+
+                    <div class="response-promise glass-card">
+                        <i class="fas fa-bolt"></i>
+                        <span>Usually responds within <strong>24 hours</strong></span>
+                    </div>
+
+                    <div class="contact-cards">
+                        <div class="contact-card glass-card hover-lift">
+                            <div class="contact-card-icon glass-orb"><i class="fas fa-phone-alt"></i></div>
+                            <div class="contact-card-info">
+                                <span class="contact-card-label">Mobile</span>
+                                <a href="tel:+916351958365" class="contact-card-value">+91 63519 58365</a>
+                                <a href="tel:+919924225842" class="contact-card-value">+91 99242 25842</a>
+                            </div>
+                        </div>
+                        <div class="contact-card glass-card hover-lift">
+                            <div class="contact-card-icon glass-orb"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-card-info">
+                                <span class="contact-card-label">Email</span>
+                                <a href="mailto:mayuddinmansuri786@gmail.com" class="contact-card-value">mayuddinmansuri786@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-card glass-card hover-lift">
+                            <div class="contact-card-icon glass-orb"><i class="fab fa-instagram"></i></div>
+                            <div class="contact-card-info">
+                                <span class="contact-card-label">Instagram</span>
+                                <a href="https://www.instagram.com/mayuddinmansuri" target="_blank" rel="noopener noreferrer" class="contact-card-value">@mayuddinmansuri</a>
+                            </div>
+                        </div>
+                        <div class="contact-card glass-card hover-lift">
+                            <div class="contact-card-icon glass-orb"><i class="fab fa-linkedin-in"></i></div>
+                            <div class="contact-card-info">
+                                <span class="contact-card-label">LinkedIn</span>
+                                <a href="https://www.linkedin.com/in/mayuddinmansuri" target="_blank" rel="noopener noreferrer" class="contact-card-value">Mayuddin Mansuri</a>
+                            </div>
+                        </div>
+                        <div class="contact-card glass-card cv-download-card hover-lift" id="contactDownloadCV">
+                            <div class="contact-card-icon glass-orb cv-icon"><i class="fas fa-file-download"></i></div>
+                            <div class="contact-card-info">
+                                <span class="contact-card-label">Resume</span>
+                                <span class="contact-card-value cv-card-text">Download my CV / Resume</span>
+                            </div>
+                            <div class="cv-card-arrow"><i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper reveal-right">
+                    <form class="contact-form glass-card" id="contactForm" novalidate>
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" class="form-input" placeholder=" " required autocomplete="name">
+                            <label for="name" class="form-label">Your Name</label>
+                            <div class="form-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" class="form-input" placeholder=" " required autocomplete="email">
+                            <label for="email" class="form-label">Your Email</label>
+                            <div class="form-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" class="form-input" placeholder=" " required>
+                            <label for="subject" class="form-label">Subject</label>
+                            <div class="form-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <select id="budget" name="budget" class="form-input form-select" required>
+                                <option value="" disabled selected></option>
+                                <option value="< ₹10,000">Less than ₹10,000</option>
+                                <option value="₹10,000 - ₹50,000">₹10,000 - ₹50,000</option>
+                                <option value="₹50,000 - ₹1,00,000">₹50,000 - ₹1,00,000</option>
+                                <option value="> ₹1,00,000">More than ₹1,00,000</option>
+                                <option value="Discuss">Let's Discuss</option>
+                            </select>
+                            <label for="budget" class="form-label">Budget Range</label>
+                            <div class="form-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" class="form-input form-textarea" placeholder=" " required></textarea>
+                            <label for="message" class="form-label">Your Message</label>
+                            <div class="form-line"></div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary glass-btn btn-submit magnetic-btn">
+                            <span class="btn-text">SEND MESSAGE</span>
+                            <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                            <div class="btn-shine"></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         FOOTER
+         ============================================================ -->
+    <footer class="footer glass-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">M</span>
+                    <span class="logo-dot">.</span>
+                    <span class="logo-text">M</span>
+                </div>
+                <p class="footer-tagline">3D Generalist + Designer</p>
+
+                <div class="footer-nav">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#contact">Contact</a>
+                </div>
+
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/mayuddinmansuri" target="_blank" rel="noopener noreferrer" class="glass-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/mayuddinmansuri" target="_blank" rel="noopener noreferrer" class="glass-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com/in/mayuddinmansuri" target="_blank" rel="noopener noreferrer" class="glass-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.behance.net/mayuddinmansuri" target="_blank" rel="noopener noreferrer" class="glass-icon" aria-label="Behance"><i class="fab fa-behance"></i></a>
+                    <a href="https://www.artstation.com/mayuddinmansuri" target="_blank" rel="noopener noreferrer" class="glass-icon" aria-label="ArtStation"><i class="fab fa-artstation"></i></a>
+                    <a href="mailto:mayuddinmansuri786@gmail.com" class="glass-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+
+                <a href="#" class="footer-cv-btn glass-btn" id="footerDownloadCV">
+                    <i class="fas fa-download"></i> Download CV
+                </a>
+
+                <div class="footer-line"></div>
+                <p class="footer-copyright">&copy; 2024 Mayuddin Mansuri. All Rights Reserved.</p>
+                <p class="footer-made">Made with <span class="heart">❤</span> & Creativity</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== FLOATING ELEMENTS ==================== -->
+    <div class="floating-cv-btn glass-float-btn" id="floatingCVBtn" aria-label="Download CV">
+        <div class="floating-cv-pulse"></div>
+        <i class="fas fa-file-download"></i>
+        <span class="floating-cv-tooltip glass-tooltip">Download CV</span>
+    </div>
+
+    <a href="https://wa.me/916351958365?text=Hi%20Mayuddin!%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project."
+       target="_blank"
+       rel="noopener noreferrer"
+       class="whatsapp-btn glass-float-btn"
+       id="whatsappBtn"
+       aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip glass-tooltip">Chat on WhatsApp</span>
+    </a>
+
+    <!-- ==================== CV MODAL ==================== -->
+    <div class="cv-modal" id="cvModal" role="dialog" aria-modal="true" aria-labelledby="cvModalTitle">
+        <div class="cv-modal-overlay glass-modal-overlay" id="cvModalOverlay"></div>
+        <div class="cv-modal-content glass-card glass-modal">
+            <button class="cv-modal-close glass-btn" id="cvModalClose" aria-label="Close modal"><i class="fas fa-times"></i></button>
+            <div class="cv-modal-icon">
+                <div class="cv-modal-icon-bg glass-orb"></div>
+                <i class="fas fa-file-pdf"></i>
+            </div>
+            <h3 class="cv-modal-title" id="cvModalTitle">Download My CV</h3>
+            <p class="cv-modal-text">Get a detailed look at my experience, skills, and achievements.</p>
+            <div class="cv-modal-preview glass-card">
+                <div class="cv-preview-header">
+                    <div class="cv-preview-avatar glass-orb">MM</div>
+                    <div>
+                        <h4>Mayuddin Mansuri</h4>
+                        <p>3D Generalist + Designer</p>
+                    </div>
+                </div>
+                <div class="cv-preview-items">
+                    <div class="cv-preview-item glass-pill"><i class="fas fa-briefcase"></i><span>5+ Years</span></div>
+                    <div class="cv-preview-item glass-pill"><i class="fas fa-tools"></i><span>8+ Skills</span></div>
+                    <div class="cv-preview-item glass-pill"><i class="fas fa-building"></i><span>Lead Artist</span></div>
+                    <div class="cv-preview-item glass-pill"><i class="fas fa-project-diagram"></i><span>50+ Projects</span></div>
+                </div>
+            </div>
+            <div class="cv-modal-buttons">
+                <a href="assets/Mayuddin-Mansuri-CV.pdf" download class="btn btn-primary glass-btn cv-download-main" id="downloadPDF">
+                    <span class="btn-text">DOWNLOAD PDF</span>
+                    <span class="btn-icon"><i class="fas fa-file-pdf"></i></span>
+                    <div class="btn-shine"></div>
+                </a>
+                
+            </div>
+            <div class="cv-modal-generating" id="cvGenerating">
+                <div class="generating-spinner"></div>
+                <p>Generating your CV...</p>
+            </div>
+            <div class="cv-modal-success" id="cvSuccess">
+                <i class="fas fa-check-circle"></i>
+                <p>CV Downloaded Successfully!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PORTFOLIO LIGHTBOX ==================== -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+        <div class="lightbox-overlay glass-modal-overlay"></div>
+        <div class="lightbox-content">
+            <button class="lightbox-close glass-btn" aria-label="Close"><i class="fas fa-times"></i></button>
+            <button class="lightbox-prev glass-btn" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <button class="lightbox-next glass-btn" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+            <div class="lightbox-image glass-card" id="lightboxImage">
+                <div class="lightbox-placeholder">
+                    <i class="fas fa-cube"></i>
+                    <span>Project Preview</span>
+                </div>
+            </div>
+            <div class="lightbox-info glass-card" id="lightboxInfo">
+                <h3>Project Title</h3>
+                <p>Project description goes here.</p>
+                <div class="lightbox-tags"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== TOAST ==================== -->
+    <div class="toast glass-card" id="toast" role="alert">
+        <div class="toast-icon"><i class="fas fa-check-circle"></i></div>
+        <div class="toast-message" id="toastMessage">Action completed!</div>
+        <div class="toast-progress"></div>
+    </div>
+
+    <!-- ==================== BACK TO TOP ==================== -->
+    <button class="back-to-top glass-float-btn" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+        <svg class="back-to-top-circle" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="48" id="backToTopCircle"></circle>
+        </svg>
+    </button>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script src="script.js"></script>
+</body>
+</html>
